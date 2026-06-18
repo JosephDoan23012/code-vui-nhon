@@ -227,7 +227,69 @@ function animate(now) {
 
     ctx.globalAlpha = 1;
 
-    requestAnimationFrame(animate);
+    /* ==========================
+   I LOVE U ❤️
+========================== */
+
+ctx.save();
+
+const textPulse = 0.9 + eased * 0.25;
+
+ctx.translate(
+    innerWidth / 2,
+    innerHeight / 2 + 180
+);
+
+ctx.scale(textPulse, textPulse);
+
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+
+const fontSize = Math.max(
+    40,
+    Math.min(innerWidth * 0.05, 70)
+);
+
+ctx.font = `bold ${fontSize}px "Segoe UI", Arial, sans-serif`;
+
+const gradient = ctx.createLinearGradient(
+    -250,
+    0,
+    250,
+    0
+);
+
+gradient.addColorStop(0, "#ff4da6");
+gradient.addColorStop(0.25, "#ff8ac8");
+gradient.addColorStop(0.5, "#ffffff");
+gradient.addColorStop(0.75, "#ff8ac8");
+gradient.addColorStop(1, "#ff4da6");
+
+ctx.fillStyle = gradient;
+
+ctx.shadowColor = "#ff4da6";
+ctx.shadowBlur = 20 + eased * 30;
+
+ctx.fillText("I Love U", 0, 0);
+
+ctx.globalAlpha = 0.4;
+ctx.fillText("I Love U", 0, 0);
+
+ctx.globalAlpha = 0.85;
+ctx.shadowBlur = 10;
+ctx.fillStyle = "#ffd6e8";
+
+ctx.font = `${fontSize * 0.35}px "Segoe UI", sans-serif`;
+
+ctx.fillText(
+    "Forever & Always",
+    0,
+    fontSize * 0.9
+);
+
+ctx.restore();
+
+requestAnimationFrame(animate);
 }
 
 requestAnimationFrame(animate);
